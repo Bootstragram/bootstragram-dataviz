@@ -1,0 +1,14 @@
+{
+  "name": "bootstragram-dataviz",
+  "version": "1.0.0",
+  "description": "A package of React components dedicated to data visualization",
+  "main": "index.js",
+  "author": "Bootstragram",
+  "license": "MIT",
+  "dependencies": {
+    "coffee-script": "^1.12.7"
+  },
+  "scripts": {
+    "compile-coffee": "coffee -o lib -c src/bsg-d3-scatterplot.coffee"
+  }
+}
