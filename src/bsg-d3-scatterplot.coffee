@@ -3,7 +3,7 @@ class Bootstragram.Scatterplot extends Bootstragram.D3Common
   constructor: (@csvURL, opts) ->
     super(opts)
 
-    @verbose = false
+    @verbose = true
 
     # false is the only possible option otherwise it evaluates as (false or true) => ie always true
     @showRegressionLine = opts.showRegressionLine or false
@@ -32,6 +32,9 @@ class Bootstragram.Scatterplot extends Bootstragram.D3Common
     # Load data, rest is wrapped in
     # TODO: error management
     d3.csv(@csvURL, (error, dataset) ->
+      if error
+        console.log error
+
       # Change xVar, yVar to num
       dataset.forEach (d) ->
         d[self.xVar] = +d[self.xVar]

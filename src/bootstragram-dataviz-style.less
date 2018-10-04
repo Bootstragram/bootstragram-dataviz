@@ -1,0 +1,219 @@
+// This is the base for all D3 graphes in the blog
+
+// Links:
+//
+// - [A color palette optimized for data visualization](http://www.mulinblog.com/a-color-palette-optimized-for-data-visualization/)
+
+.rotate (@deg) {
+	-webkit-transform: rotate(@deg);
+	-moz-transform: 	 rotate(@deg);
+	-ms-transform: 		 rotate(@deg);
+	-o-transform: 		 rotate(@deg);
+}
+
+/// The colors below are defined as in the link above, as defined by Stephen Few, in his book, *Show me the numbers*
+@few-gray:   #4D4D4D;
+@few-blue:   #5DA5DA;
+@few-orange: #FAA43A;
+@few-green:  #60BD68;
+@few-pink:   #F17CB0;
+@few-brown:  #B2912F;
+@few-purple: #B276B2;
+@few-yellow: #DECF3F;
+@few-red:    #F15854;
+
+
+@bsg-d3-background-color: hsla(hue(@few-orange), saturation(@few-orange), .95, 1.0);
+@bsg-d3-background-color-alt: hsla(hue(@few-orange), saturation(@few-orange), .90, 1.0);
+
+
+.bsg-d3 {
+  margin: .5em 0 1em 0;
+  max-width: 100%;
+  min-height: 100px;
+  background-color: @bsg-d3-background-color;
+
+  text {
+    font-family: 'Titillium Web', sans-serif;
+  }
+}
+
+.bsg-d3--padded {
+  padding: 1em;
+}
+
+
+.bsg-d3__background-rect {
+  fill: @bsg-d3-background-color;
+  pointer-events: none;
+}
+
+
+.bsg-d3__axis {
+  .tick {
+    stroke: lightgray;
+    opacity: 0.7;
+  }
+
+  .tick text {
+    stroke: none;
+    fill: black;
+    font-size: 0.68em;
+  }
+
+  path, line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+  }
+}
+
+.bsg-d3__axis-x {
+}
+
+.bsg-d3__axis-y {
+}
+
+.bsg-d3__axis--tiny {
+  .tick text {
+    font-size: 10px;
+  }
+}
+
+.bsg-d3__axis--nobar {
+  path {
+    display: none;
+  }
+}
+
+
+.bsg-d3__grid {
+  .tick {
+    stroke: lightgray;
+    opacity: 0.7;
+  }
+
+  .tick text {
+    stroke: none;
+    fill: black;
+    font-size: 0.68em;
+  }
+
+  path {
+    stroke-width: 0;
+    shape-rendering: crispEdges;
+  }
+}
+
+.bsg-d3__grid--x {
+
+}
+
+.bsg-d3__grid--y {
+
+}
+
+
+.bsg-d3__axis-name {
+  font-size: .68em;
+  text-anchor: middle;
+}
+
+.bsg-d3__axis-name--x {
+}
+
+.bsg-d3__axis-name--y {
+  .rotate(-90deg);
+}
+
+
+.bsg-d3__scatter-point {
+  fill: @few-blue;
+  fill-opacity: 0.6;
+}
+
+.bsg-d3__scatter-point--highlighted {
+  fill: @few-orange;
+  fill-opacity: 1;
+  stroke: @few-blue;
+}
+
+.bsg-d3__scatter-point--lining {
+  fill: hsla(hue(@few-blue), 1.0, lightness(@few-blue), 1.0);
+  fill-opacity: 1;
+}
+
+
+.bsg-d3__line {
+  stroke: hsla(hue(@few-blue), 1.0, lightness(@few-blue), 1.0);
+}
+
+.bsg-d3__line--regression {
+
+}
+
+
+.bsg-d3__bar {
+  fill: @few-blue;
+}
+
+.bsg-d3__bar--highlighted {
+  fill: @few-orange;
+}
+
+
+//-----------------------------------------------------------------------------
+// Predictor3000 Colors & Style
+.bsg-d3__bar--1 {
+  fill: @few-blue;
+}
+.bsg-d3__bar--N {
+  fill: @few-orange;
+}
+.bsg-d3__bar--2 {
+  fill: @few-green;
+}
+
+#teamSelectors {
+  padding: 20px 20px 0 20px; // To synchronize with the JS
+
+  #teamSelector1 {
+    float: left;
+  }
+
+  #teamSelector2 {
+    float: right;
+  }
+
+  #teamSelectorButton1, #teamSelectorButton2 {
+    font-size: 1em;
+  }
+}
+
+//-----------------------------------------------------------------------------
+
+
+.bsg-d3__tooltip {
+  position: absolute;
+  text-align: center;
+  padding: .5em;
+  font-family: 'Titillium Web' sans-serif;
+  font-size: 0.68em;
+  line-height: 1.4em;
+  background-color: @few-gray;
+  color: white;
+  border: 0px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+
+.bsg-d3__table {
+  font-size: 0.73em;
+  line-height: 1.6em;
+}
+
+
+.bsg-d3__table-row--group-A, .bsg-d3__table-row--group-C, .bsg-d3__table-row--group-E {
+  background-color: @bsg-d3-background-color-alt;
+}

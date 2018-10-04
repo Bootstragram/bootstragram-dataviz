@@ -6,9 +6,15 @@
   "author": "Bootstragram",
   "license": "MIT",
   "dependencies": {
-    "coffee-script": "^1.12.7"
+    "coffee-script": "^1.12.7",
+    "d3": "^3.5.17",
+    "jquery": "^3.3.1"
   },
   "scripts": {
-    "compile-coffee": "coffee -o lib -c src/bsg-d3-scatterplot.coffee"
+    "compile-coffee": "coffee --compile --output lib/ src/",
+    "compile-less": "lessc src/bootstragram-dataviz-style.less lib/bootstragram-dataviz-style.css"
+  },
+  "devDependencies": {
+    "less": "^3.8.1"
   }
 }
