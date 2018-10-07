@@ -15,3 +15,6 @@ docs-serve:
 
 package:
 	yarn rollup
+
+release: clean install build package
+	npm publish
