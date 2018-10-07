@@ -63,31 +63,6 @@ class Bootstragram.Scatterplot extends Bootstragram.D3Common
       self._drawGrid()
       self._drawAxis()
 
-      # Create grid and tick labels attached to graph
-      self.graph.append("g")
-        .attr("class", "bsg-d3__grid bsg-d3__grid--x")
-        .attr("id", "x-grid")
-        .attr("transform", "translate(0," + self.graphHeight + ")")
-        .call(self.xGrid.tickSize(- self.graphHeight, 0, 0).tickPadding(self.xPaddingLabels))
-
-      self.graph.append("g")
-        .attr("class", "bsg-d3__grid bsg-d3__grid--y")
-        .attr("id", "y-grid")
-        .call(self.yGrid.tickSize(- self.graphWidth, 0, 0).tickPadding(self.yPaddingLabels))
-
-      # Create axes, no tick labels attached to graph
-      self.graph.append("g")
-        .attr("class", "bsg-d3__axis bsg-d3__axis-x")
-        .attr("id", "x-axis")
-        .attr("transform", "translate(0," + self.yScale(0) + ")")
-        .call(self.xAxis.tickSize(self.tickDimension, 0, 0).tickFormat(""))
-
-      self.graph.append("g")
-        .attr("class", "bsg-d3__axis bsg-d3__axis-y")
-        .attr("id", "y-axis")
-        .attr("transform", "translate(" + self.xScale(0) + ",0)")
-        .call(self.yAxis.tickSize(self.tickDimension, 0, 0).tickFormat(""))
-
       # Add axes names attached to svg
       # TODO: too much fudging with paddings?
 
