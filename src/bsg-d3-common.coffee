@@ -113,8 +113,8 @@ class Bootstragram.D3Common
       .style("opacity", 0)
 
     # Define scales ranges using dimensions of graph
-    @xScale = d3.scale.linear().range([0, @graphWidth])
-    @yScale = d3.scale.linear().range([@graphHeight, 0])
+    @xScale = d3.scaleLinear().range([0, @graphWidth])
+    @yScale = d3.scaleLinear().range([@graphHeight, 0])
 
 
 
@@ -126,13 +126,9 @@ class Bootstragram.D3Common
   and @xTicks / @yTicks
   ###
   _drawGrid: () ->
-    @xGrid = d3.svg.axis()
-      .scale(@xScale)
-      .orient("bottom")
+    @xGrid = d3.axisBottom(@xScale)
       .ticks(@xTicks)
-    @yGrid = d3.svg.axis()
-      .scale(@yScale)
-      .orient("left")
+    @yGrid = d3.axisLeft(@yScale)
       .ticks(@yTicks)
 
     # Create grid and tick labels attached to graph
@@ -150,13 +146,9 @@ class Bootstragram.D3Common
 
   _drawAxis: (yRefValueForXAxis = 0, xRefValueForYAxis = 0) ->
     # Define axes
-    @xAxis = d3.svg.axis()
-      .scale(@xScale)
-      .orient("bottom")
+    @xAxis = d3.axisBottom(@xScale)
       .ticks(@xTicks)
-    @yAxis = d3.svg.axis()
-      .scale(@yScale)
-      .orient("left")
+    @yAxis = d3.axisLeft(@yScale)
       .ticks(@yTicks)
 
     # Create axes, no tick labels attached to graph
