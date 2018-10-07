@@ -31,10 +31,7 @@ class Bootstragram.Scatterplot extends Bootstragram.D3Common
 
     # Load data, rest is wrapped in
     # TODO: error management
-    d3.csv(@csvURL, (error, dataset) ->
-      if error
-        console.log error
-
+    d3.csv(@csvURL).then (dataset) ->
       # Change xVar, yVar to num
       dataset.forEach (d) ->
         d[self.xVar] = +d[self.xVar]
@@ -201,7 +198,9 @@ class Bootstragram.Scatterplot extends Bootstragram.D3Common
       if callback?
         console.debug 'Calling callback' if self.verbose
         callback()
-    )
+
+    .catch (error) ->
+      console.log error
 
     this
 
