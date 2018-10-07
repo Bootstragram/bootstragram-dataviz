@@ -38,12 +38,12 @@
 
     var lang = "fr";
   </script>
-  <script src="bsg-d3-common.js"></script>
-  <script src="bsg-d3-scatterplot.js"></script>
-  <script>
+  <script type="module">
+    import DataViz from "./bootstragram-dataviz.min.js";
+
     $(document).ready(() => {
       console.log("Starting script");
-      drawPlot = new Bootstragram.Scatterplot('dataset.csv', {
+      const drawPlot = new DataViz.Scatterplot('dataset.csv', {
         parentId: 'draws',
         csvHeaderForX: 'Mean',
         csvHeaderForY: 'Draws',

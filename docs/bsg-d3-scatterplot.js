@@ -1,1 +1,0 @@
-../lib/bsg-d3-scatterplot.js
