@@ -76,3 +76,4 @@ typings/
 
 # Ignore the directory where generated JS files live
 lib
+dist
