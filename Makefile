@@ -3,6 +3,9 @@ build:
 	yarn compile-coffee
 	yarn compile-less
 
+clean:
+	git clean -xdf
+
 install:
 	yarn install
 

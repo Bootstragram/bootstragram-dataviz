@@ -31,10 +31,7 @@ class Bootstragram.Scatterplot extends Bootstragram.D3Common
 
     # Load data, rest is wrapped in
     # TODO: error management
-    d3.csv(@csvURL, (error, dataset) ->
-      if error
-        console.log error
-
+    d3.csv(@csvURL).then (dataset) ->
       # Change xVar, yVar to num
       dataset.forEach (d) ->
         d[self.xVar] = +d[self.xVar]
@@ -65,31 +62,6 @@ class Bootstragram.Scatterplot extends Bootstragram.D3Common
 
       self._drawGrid()
       self._drawAxis()
-
-      # Create grid and tick labels attached to graph
-      self.graph.append("g")
-        .attr("class", "bsg-d3__grid bsg-d3__grid--x")
-        .attr("id", "x-grid")
-        .attr("transform", "translate(0," + self.graphHeight + ")")
-        .call(self.xGrid.tickSize(- self.graphHeight, 0, 0).tickPadding(self.xPaddingLabels))
-
-      self.graph.append("g")
-        .attr("class", "bsg-d3__grid bsg-d3__grid--y")
-        .attr("id", "y-grid")
-        .call(self.yGrid.tickSize(- self.graphWidth, 0, 0).tickPadding(self.yPaddingLabels))
-
-      # Create axes, no tick labels attached to graph
-      self.graph.append("g")
-        .attr("class", "bsg-d3__axis bsg-d3__axis-x")
-        .attr("id", "x-axis")
-        .attr("transform", "translate(0," + self.yScale(0) + ")")
-        .call(self.xAxis.tickSize(self.tickDimension, 0, 0).tickFormat(""))
-
-      self.graph.append("g")
-        .attr("class", "bsg-d3__axis bsg-d3__axis-y")
-        .attr("id", "y-axis")
-        .attr("transform", "translate(" + self.xScale(0) + ",0)")
-        .call(self.yAxis.tickSize(self.tickDimension, 0, 0).tickFormat(""))
 
       # Add axes names attached to svg
       # TODO: too much fudging with paddings?
@@ -201,7 +173,9 @@ class Bootstragram.Scatterplot extends Bootstragram.D3Common
       if callback?
         console.debug 'Calling callback' if self.verbose
         callback()
-    )
+
+    .catch (error) ->
+      console.log error
 
     this
 
@@ -231,6 +205,7 @@ class Bootstragram.Scatterplot extends Bootstragram.D3Common
 
 
   # TODO: parametrize this better
+  # TODO: use a path instead of circles to draw this!
   drawExtraCurveForDraws: () ->
     console.debug 'drawExtraCurveForDraws' if @verbose
 
