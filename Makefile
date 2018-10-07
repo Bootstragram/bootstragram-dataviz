@@ -17,4 +17,5 @@ package:
 	yarn rollup
 
 release: clean install build package
+	# Can't use `yarn publish` as it's not compatible with NPM's 2FA
 	npm publish
