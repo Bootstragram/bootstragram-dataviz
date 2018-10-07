@@ -1,20 +1,30 @@
 {
   "name": "bootstragram-dataviz",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A package of React components dedicated to data visualization",
-  "main": "index.js",
-  "author": "Bootstragram",
+  "homepage": "https://github.com/Bootstragram/bootstragram-dataviz",
   "license": "MIT",
+  "main": "index.js",
+  "author": {
+    "name": "Bootstragram",
+    "url": "https://bootstragram.com"
+  },
   "dependencies": {
     "d3": "^5.7.0",
     "jquery": "^3.3.1"
   },
+  "devDependencies": {
+    "coffeescript": "^2.0.0",
+    "less": "^3.8.1",
+    "rollup": "^0.66.4",
+    "rollup-plugin-ascii": "^0.0.3",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-terser": "^3.0.0"
+  },
   "scripts": {
     "compile-coffee": "coffee --compile --output lib/ src/",
-    "compile-less": "lessc src/bootstragram-dataviz-style.less lib/bootstragram-dataviz-style.css"
-  },
-  "devDependencies": {
-    "coffee-script": "^1.12.7",
-    "less": "^3.8.1"
+    "compile-less": "lessc src/bootstragram-dataviz-style.less lib/bootstragram-dataviz-style.css",
+    "rollup": "rollup -c"
   }
 }

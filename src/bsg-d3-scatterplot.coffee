@@ -1,4 +1,6 @@
-class Bootstragram.Scatterplot extends Bootstragram.D3Common
+import D3Common from './bsg-d3-common'
+
+class Scatterplot extends D3Common
 
   constructor: (@csvURL, opts) ->
     super(opts)
@@ -233,3 +235,5 @@ class Bootstragram.Scatterplot extends Bootstragram.D3Common
       .attr("r", 2)
 
     this
+
+export default Scatterplot

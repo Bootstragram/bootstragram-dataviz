@@ -1,7 +1,7 @@
 ###*
 Basic comment so that JSDoc recognizes this.
 ###
-class Bootstragram.D3Common
+class D3Common
 
   ###*
   # This is a description of the constructor
@@ -200,3 +200,5 @@ class Bootstragram.D3Common
       return opt
     console.error 'Invalid opt: ', opt, ', lang: ', lang
     return null
+
+export default D3Common
