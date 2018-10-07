@@ -205,6 +205,7 @@ class Bootstragram.Scatterplot extends Bootstragram.D3Common
 
 
   # TODO: parametrize this better
+  # TODO: use a path instead of circles to draw this!
   drawExtraCurveForDraws: () ->
     console.debug 'drawExtraCurveForDraws' if @verbose
 
