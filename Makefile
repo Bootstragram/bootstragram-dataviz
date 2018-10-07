@@ -4,7 +4,8 @@ build:
 	yarn compile-less
 
 clean:
-	git clean -xdf
+	# `git clean -xdf` is too dangerous as it removes all WIP files
+	rm -rf lib node_modules 
 
 install:
 	yarn install
