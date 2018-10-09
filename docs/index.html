@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
   <link rel="stylesheet" href="bootstragram-dataviz-style.css">
 </head>
@@ -6,6 +7,8 @@
 <body>
   <h1>Scatterplots</h1>
   <div id="draws"></div>
+  <h1>Histogram</h1>
+  <div id="histogram"></div>
 
   <script src="d3.min.js"></script>
   <script src="jquery.min.js"></script>
@@ -39,7 +42,7 @@
     var lang = "fr";
   </script>
   <script type="module">
-    import DataViz from "./bootstragram-dataviz.min.js";
+    import DataViz from "./bootstragram-dataviz.js";
 
     $(document).ready(() => {
       console.log("Starting script");
@@ -57,6 +60,15 @@
       drawPlot.draw(function() {
         drawPlot.drawExtraCurveForDraws();
       });
+
+      const histogram = new DataViz.Histogram('fifa_ranking.csv', {
+        parentId: 'histogram',
+        xLegend: "Team rating",
+        xColumn: "Country",
+        yColumn: "Index"
+      });
+      histogram.draw();
+
       console.log("End script");
     });
   </script>
