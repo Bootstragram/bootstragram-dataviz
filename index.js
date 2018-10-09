@@ -1,9 +1,11 @@
 import { version } from "./package";
-import Scatterplot from './lib/bsg-d3-scatterplot';
-import Histogram from './lib/bsg-d3-histogram';
+import Histogram from "./lib/bsg-d3-histogram";
+import Scatterplot from "./lib/bsg-d3-scatterplot";
+import Table from "./lib/bsg-d3-table";
 
 export default {
   version,
+  Histogram,
   Scatterplot,
-  Histogram
+  Table
 };

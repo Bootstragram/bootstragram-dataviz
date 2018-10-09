@@ -2,6 +2,7 @@ build:
 	rm -f lib/*
 	yarn compile-coffee
 	yarn compile-less
+	yarn compile-sass
 
 clean:
 	# `git clean -xdf` is too dangerous as it removes all WIP files

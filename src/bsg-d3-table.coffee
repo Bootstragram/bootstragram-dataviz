@@ -1,9 +1,7 @@
----
-# Hello there.
----
+import D3Common from './bsg-d3-common'
 
 # This class represent a sortable table.
-class Bootstragram.Table extends Bootstragram.D3Common
+class Table extends D3Common
 
   constructor: (@csvURL, opts) ->
     super(opts)
@@ -20,10 +18,7 @@ class Bootstragram.Table extends Bootstragram.D3Common
   draw: (callback = null) ->
     self = this
 
-    d3.csv(@csvURL, (error, dataset) ->
-      if error
-        console.error "ERROR:", error
-
+    d3.csv(@csvURL).then (dataset) ->
       tableId = self.parentId + "__table"
       table = $('<table></table>').addClass("bsg-d3__table table")
       table.attr('id', tableId)
@@ -60,6 +55,9 @@ class Bootstragram.Table extends Bootstragram.D3Common
         dataTableOpts.order = self.dataTablesDefaultOrder if self.dataTablesDefaultOrder?
 
         $("#" + tableId).DataTable(dataTableOpts)
-    )
+    .catch (error) ->
+      console.log error
 
     this
+
+export default Table
