@@ -164,6 +164,11 @@ class Histogram extends D3Common
       bars.on("mouseover", (d, i) ->
         console.debug "Data", d, i
 
+        if window.webkit?
+          window.webkit.messageHandlers.touch.postMessage({ d: d, i: i })
+        else
+          console.debug "No webkit found"
+
         # Create tooltip
         d3.select(this).attr("class", "bsg-d3__bar bsg-d3__bar--highlighted")
         self.tooltip.transition()

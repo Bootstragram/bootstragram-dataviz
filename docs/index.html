@@ -1,17 +1,26 @@
 <html lang="en">
 
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <style>
+  html {
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    padding: 0;
+    margin: 0;
+  }
+  </style>
   <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="bootstragram-dataviz-style.css">
 </head>
 
 <body>
-  <h1>Scatterplots</h1>
-  <div id="draws"></div>
-  <h1>Histogram</h1>
+  <h1 id="title">Histogram</h1>
   <div id="histogram"></div>
-  <h1>Table</h1>
-  <div id="table" class="bsg-d3 bsg-d3--padded table-responsive"></div>
 
   <script src="d3.min.js"></script>
   <script src="jquery.min.js"></script>
@@ -46,41 +55,29 @@
     var lang = "fr";
   </script>
   <script type="module">
-    import DataViz from "./bootstragram-dataviz.js";
+    import DataViz from "./bootstragram-dataviz.js?c";
 
     $(document).ready(() => {
-      console.log("Starting script");
-      const drawPlot = new DataViz.Scatterplot('dataset.csv', {
-        parentId: 'draws',
-        csvHeaderForX: 'Mean',
-        csvHeaderForY: 'Draws',
-        xLegend: "Average rating difference (RD)",
-        yLegend: "Draws % (D)",
-        xLegendAlias: "RD",
-        yLegendAlias: "D",
-        showRegressionLine: false,
-        dataFilteredTooltip: false
-      });
-      drawPlot.draw(function() {
-        drawPlot.drawExtraCurveForDraws();
-      });
+      if (window.localStorage['test']) {
+        console.log("LocalStorage already set: ", window.localStorage['test']);
+        $('#title').text(window.localStorage['test']);
+      } else {
+        window.localStorage['test'] = "Coucou !";
+        console.log("Set LocalStorage");
+      }
 
+      const defaultDisplayRatio = typeof displayRatio === 'number' ? displayRatio : 1.61803;
       const histogram = new DataViz.Histogram('fifa_ranking.csv', {
+        displayRatio: defaultDisplayRatio,
+        padding: {
+          left: 120
+        },
         parentId: 'histogram',
         xLegend: "Team rating",
         xColumn: "Country",
         yColumn: "Index"
       });
       histogram.draw();
-
-      const table = new DataViz.Table('pronos.csv', {
-        parentId: 'table',
-        columns: [ "Country", "Quarter", "Semi", "Third", "Final", "First" ],
-        sortable: false
-      });
-      table.draw();
-
-      console.log("End script");
     });
   </script>
 </body>
